@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if t=='l' %}
+    <div class="shadow p-3 mb-5 bg-white rounded">
+    <h1 style="color:rgb(0, 102, 255)">"{{moviee}}" is a great choice.</h1>
+    <h3 style="color:rgb(0, 102, 255)">Here are some more like this</h3>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      {% for m in a %}
+        <li class="list-group-item" style="color:rgb(0, 179, 0)"><strong>{{m|capitalize}}</strong></li>
+      {% endfor %}
+    </ul>
+    <nav class="navbar navbar-light bg-light">
+    <h3><a style="color:rgb(0, 102, 255)" class="nav-link" href="{{url_for('home')}}">Search again</a></h3>
+    </nav>
+    {% endif %}
+{% endblock %}

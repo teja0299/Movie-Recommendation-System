@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  {% if t=='s' %}
+  <div class="shadow p-3 mb-5 bg-white rounded">
+    <h3 style="color:rgb(0, 102, 255)">Oops Sorry!...</h3>
+    <h3 style="color:rgb(0, 102, 255)">Seems like the movie is not in the database Or a mismatch of name</h3>
+    <h3 style="color:rgb(0, 102, 255)"></h3>
+    <h3 style="color:rgb(0, 102, 255)">try with same movie name to perform related search </h3>
+    <h3 style="color:rgb(0, 102, 255)">Or try another movie </h3> 
+    <form action="{{url_for('again_recommend')}}" method="get">
+    <input type="text" name="moviee" class="form-control" placeholder="try again" required>
+    <br>
+    <input type="submit" class="btn btn-info" value="search again">
+  </form> 
+  </div>
+  
+  
+  {% else %}
+  <div class="shadow p-3 mb-5 bg-white rounded">
+    <h1 style="color:rgb(0, 102, 255)">"{{movie}}" is a great choice.</h1>
+    <h3 style="color:rgb(0, 102, 255)">Here are some recommendations for you</h3>
+  </div>
+
+    <ul class="list-group list-group-flush">
+      {% for m in r %}
+        <li class="list-group-item" style="color:rgb(0, 179, 0)"><strong>{{m|capitalize}}</strong></li>
+      {% endfor %}
+    </ul>
+    <nav class="navbar navbar-light bg-light">
+    <h3><a style="color:rgb(0, 102, 255)" class="nav-link" href="{{url_for('home')}}">Search again</a></h3>
+    </nav>
+  {% endif %}
+
+{% endblock %}
